@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <title>Document</title>
+    <style>
+      body {
+        height: 95vh;
+        background-color: aqua;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      x-data="{
+      newText: '',
+      people: ['Alex', 'Victor', 'Ivan'],
+      addPerson() {
+        this.people.push(this.newText);
+      }
+    }"
+    >
+      <form x-on:submit.prevent="addPerson" x-model="newText">
+        <input type="text" />
+      </form>
+      <ul>
+        <template x-for="person in people">
+          <li x-text="person"></li>
+        </template>
+      </ul>
+    </div>
+
+    <!-- <div x-data="{message: 'Hi!'}">
+      <input type="text" x-model.lazy="message" />
+      <p>Message: <strong x-text="message"></strong></p>
+    </div> -->
+
+    <!-- <button x-data x-on:click="alert('Кликнул по кнопке')">
+      Кликни по мне
+    </button>
+    <button x-data x-on:click="alert('Кликнул по кнопке')">
+      Кликни по мне
+    </button> -->
+
+    <!-- <script>
+      let btn = document.querySelector("button");
+
+      btn.addEventListener("click", () => {
+        alert("Кликнул по кнопке");
+      });
+    </script> -->
+  </body>
+</html>
